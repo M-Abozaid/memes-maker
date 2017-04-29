@@ -18,7 +18,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
  
 	var convert = htmlConvert();
 
-	var wstream = fs.createWriteStream(path.join(__dirname, './mortada3.jpebg'))
+	var wstream = fs.createWriteStream( './mortada3.jpebg')
 
 	convert('https://obscure-badlands-13161.herokuapp.com/render/1473221956085675', {format:'jpeg', quality: 50})  
 	  .pipe(wstream);
