@@ -9,6 +9,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 debug('loading configuration');
 const config = require('./config');
+console.log('config inside app ',JSON.stringify(config));
 require('./init')(config);
 
 const app = express();
