@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var htmlConvert = require('html-convert');
 /* GET users listing. */
-router.get('/mortada3.jpeg', function(req, res, next) {
+router.get('/mortada3.png', function(req, res, next) {
 
 	var convert = htmlConvert();
 
