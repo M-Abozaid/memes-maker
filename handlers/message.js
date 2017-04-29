@@ -21,7 +21,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 	
 	 	let data = {
 				    "attachment":{
-				      "type":"video",
+				      "type":"image",
 				      "payload":{
 				        "url":"https://obscure-badlands-13161.herokuapp.com/users/mortada3.jpg"
 				      }
