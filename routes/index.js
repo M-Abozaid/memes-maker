@@ -9,8 +9,8 @@ router.get('/:id', function(req, res, next) {
   sessionStore.findOrCreate(sender)
 		.then(data => {
 			console.log(JSON.stringify(data));
-			var text1= data.session.context.userData.first_name
-			var text2= data.session.context.userData.last_name
+			var text1= data.session.context.current.text1
+			var text2= data.session.context.current.text2
  			
  			  let html = `<!DOCTYPE html>
 				<html >

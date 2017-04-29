@@ -15,20 +15,45 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 	session.state = session.state  || 'new';
 
 	context.current = context.current || {}
- 
+ 	
+ 	if (context.current.length == 0) {
+ 		GraphAPI.sendPlainMessage(recipientId, ' اكتب النص الاول').then(()=>{
+ 			context.current.first = true
+ 			sessionStore.saveSession(sessionId, session)
+ 		})
+
+ 	} else {
+ 		if (context.current.first && !context.current.text1) {
+ 			GraphAPI.sendPlainMessage(recipientId, ' اكتب النص الاول').then(()=>{
+ 			context.current.text1 = msg
+ 			sessionStore.saveSession(sessionId, session)
+ 		})
+ 		} else {
+ 			if (context.current.text1 && !context.current.text2) {
+ 				GraphAPI.sendPlainMessage(recipientId, ' تحميل...').then(()=>{
+		 			context.current.text2 = msg
+		 			sessionStore.saveSession(sessionId, session).then(()=>{
+		 				let data = {
+							    "attachment":{
+							      "type":"image",
+							      "payload":{
+							        "url":"https://obscure-badlands-13161.herokuapp.com/users/mortada3.jpg"
+							      }
+							    }
+							}
+				
+				  			GraphAPI.sendTemplateMessage(context.userData.recipientId,data).then(()=>{
+				  				context.current = {}
+				  				sessionStore.saveSession(sessionId, session)
+				  			})
+		 			})
+		 		})
+ 			
+ 				
+ 			
+ 		}
+ 	}
 	
-	 
-	
-	 	let data = {
-				    "attachment":{
-				      "type":"image",
-				      "payload":{
-				        "url":"https://obscure-badlands-13161.herokuapp.com/users/mortada3.jpg"
-				      }
-				    }
-				}
-	
-	  GraphAPI.sendTemplateMessage(context.userData.recipientId,data)
 
 
 };
