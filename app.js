@@ -1,30 +1,33 @@
-var express = require('express');
+const debug = require('debug')('cbp:app');
+const express = require('express');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-
-const config = require('./config');
-require('./init')(config);
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+debug('loading configuration');
+const config = require('./config');
+require('./init')(config);
 
-var app = express();
+const app = express();
 
-// view engine setup
+app.enable('trust proxy');
+app.set('port', process.env.PORT || 3000);
+
+if (app.get('env') !== 'testing') {
+    app.use(logger('dev'));
+}
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.set('view engine', 'jade')
+app.use(bodyParser.json({limit: '10mb'}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
+
+app.use(express.static(path.join(__dirname, 'public')));
+//Bot routes
 const botRoutes = require('./routes');
 
 app.get('/bot', botRoutes.get);
@@ -32,24 +35,12 @@ app.post('/bot', botRoutes.receive)
 app.use('/', index);
 app.use('/users', users);
 
-// catch 404 and forward to error handler
+
+console.log('port -  ',process.env.PORT);
 
 
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+const server = app.listen(app.get('port'), function () {
+    console.log('express server listening on port ' + server.address().port);
 });
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
-
-module.exports = app;
