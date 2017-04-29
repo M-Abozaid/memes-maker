@@ -54,7 +54,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 							    "attachment":{
 							      "type":"image",
 							      "payload":{
-							        "url":"https://obscure-badlands-13161.herokuapp.com/users/"+recipientId+"mortada3.jpg"
+							        "url":"https://obscure-badlands-13161.herokuapp.com/users/"+recipientId+"/mortada3.jpg"
 							      }
 							    }
 							}
