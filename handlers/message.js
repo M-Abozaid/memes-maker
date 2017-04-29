@@ -9,7 +9,7 @@ var path = require('path');
 module.exports = function handleTextMessage (sessionId, session, msg) {
 	
 	const context = session.context;
-	context.userData.recipientId =  session.fbid;
+	recipientId =  session.fbid;
 
 	context.msg = msg
 	session.state = session.state  || 'new';
@@ -47,7 +47,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 							    }
 							}
 				
-				  			GraphAPI.sendTemplateMessage(context.userData.recipientId,data).then(()=>{
+				  			GraphAPI.sendTemplateMessage(recipientId,data).then(()=>{
 				  				context.current = {}
 				  				session.context = context
 				  				sessionStore.saveSession(sessionId, session)
