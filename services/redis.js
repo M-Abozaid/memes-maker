@@ -67,7 +67,7 @@ exports.redisIsReady = function () {
  */
 exports.init = function initRedis(config) {
     // console.log('config in initRedis '+JSON.stringify(config))
-    client = createClient(config.redis);
+    client = createClient(config.development.redis);
 };
 
 
