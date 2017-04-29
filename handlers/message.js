@@ -54,6 +54,6 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
  		}
  	}
 	
-
+}
 
 };
