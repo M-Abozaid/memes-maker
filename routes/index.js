@@ -2,10 +2,16 @@ var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/:text1/:text2', function(req, res, next) {
-  //res.render('index', { title: 'Express' });
-  let text1= req.params.text1
-  let text2= req.params.text2
+router.get('/:id', function(req, res, next) {
+
+  var sender= req.params.id
+  sessionStore.findOrCreate(sender)
+		.then(data => {
+			var text1= data.session.context.userData.first_name
+			var text2= data.session.context.userData.last_name
+ 			
+		})
+  
   
   let html = `<!DOCTYPE html>
 <html >
