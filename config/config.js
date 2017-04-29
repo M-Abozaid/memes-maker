@@ -1,10 +1,7 @@
 'use strict';
 
 module.exports = {
-    shared: {
-    },
- 
-    development: {
+
     	redis: {
             port: 3605,
             host: '50.30.35.9',
@@ -15,11 +12,7 @@ module.exports = {
     	fbPageToken: 'EAASi7MXkBjgBAAaw1OwgNwbjX9KTHP91hMkr3AuavfMGOCjHODbOqDBF7f7Jc4AS3Er2qx17uE8FafZAZCEjnkVagdKCrhZCfD8pUkjooZCiSLegu7lBhIDYW6LSVmQfGPpZC0dIGxCTXmTWlJtNZBAK3UTssj5qZBuJM7kur47ZAwZDZD',
     	fbPageID: '1332914143413030',
     	fbWebhookVerifyToken: 'Hello-dude',
-    },
- 
-    production: {
-
-    }
+   
 }
 
 //770789176412771
