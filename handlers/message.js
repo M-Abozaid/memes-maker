@@ -9,7 +9,7 @@ var path = require('path');
 module.exports = function handleTextMessage (sessionId, session, msg) {
 	
 	const context = session.context;
-	recipientId =  session.fbid;
+	var recipientId =  session.fbid;
 
 	context.msg = msg
 	session.state = session.state  || 'new';
