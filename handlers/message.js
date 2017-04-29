@@ -16,8 +16,9 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 
 	//context.current = context.current || {}
  	if (!context.current) { context.current = {}};  
-    console.log('current -- ',context.current);
- 	if (context.current.length == 0) {
+    console.log('current -- ',context.current.length);
+
+ 	if (Object.keys(context.current).length == 0) {
  		GraphAPI.sendPlainMessage(recipientId, ' اكتب النص الاول').then(()=>{
  			context.current.first = true
  			session.context = context
