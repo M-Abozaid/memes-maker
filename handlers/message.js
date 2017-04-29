@@ -18,22 +18,22 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
  
 	var convert = htmlConvert();
 
-	var wstream = fs.createWriteStream( './mortada3.jpebg')
+	var wstream = fs.createWriteStream(path.join(__dirname, '../public/mortada3.jpeg'))
 
 	convert('https://obscure-badlands-13161.herokuapp.com/render/1473221956085675', {format:'jpeg', quality: 50})  
 	  .pipe(wstream);
 	 
 	 wstream.on('finish', function () {
-	 	// let data = {
-			// 	    "attachment":{
-			// 	      "type":"image",
-			// 	      "payload":{
-			// 	        "url":"https://obscure-badlands-13161.herokuapp.com/mortada3.jpeg"
-			// 	      }
-			// 	    }
-			// 	}
-	   console.log('file has been written');
-	  // GraphAPI.sendTemplateMessage(context.userData.recipientId,data)
+	 	let data = {
+				    "attachment":{
+				      "type":"image",
+				      "payload":{
+				        "url":"https://obscure-badlands-13161.herokuapp.com/mortada3.jpeg"
+				      }
+				    }
+				}
+	  console.log('file has been written');
+	  GraphAPI.sendTemplateMessage(context.userData.recipientId,data)
 	});
 
 };
