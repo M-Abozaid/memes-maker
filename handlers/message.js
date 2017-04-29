@@ -4,6 +4,7 @@ const sessionStore = require('../sessionStore');
 const GraphAPI = require('../graphAPI');
 var htmlConvert = require('html-convert');
 var fs = require('fs');
+var path = require('path');
 
 module.exports = function handleTextMessage (sessionId, session, msg) {
 	
