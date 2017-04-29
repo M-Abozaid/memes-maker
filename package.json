@@ -19,5 +19,8 @@
     "request": "^2.81.0",
     "request-promise": "^4.2.0",
     "serve-favicon": "~2.3.2"
+  },
+  "engines": {
+    "node": "^6.0.0"
   }
 }

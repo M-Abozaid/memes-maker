@@ -6,7 +6,6 @@ const _ = require('lodash');
 const GraphAPI = require('./graphAPI');
 const sessionStore = require('./sessionStore');
 
-const userService = require('./services/user');
 const config = require('./config'); 
 
 const FB_VERIFY_TOKEN = config.fbWebhookVerifyToken;

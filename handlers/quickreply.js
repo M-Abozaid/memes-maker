@@ -3,29 +3,29 @@
 const GraphAPI = require('../graphAPI');
 const platformHelpers = require('../platformHelpers');
 const sessionStore = require('../sessionStore');
-const wit = require('../wit');
+//const wit = require('../wit');
 
 module.exports = function handleQuickReply(sender, sessionId, context, payload) {
 	//context.message = msg;
 
 	console.log('inside handleQuickReply '+'context '+JSON.stringify(context)+'payload '+ JSON.stringify(payload));
 
-	let payloadTokens = payload.split(':');
-	const msg = payloadTokens[0];
-	//context.message = msg;
-	wit.runActions(sessionId, msg, context, (error, context) => {
-		if (error) {
-			console.log('Oops! Got an error from Wit:', error);
-			return;
-		} 
+	// let payloadTokens = payload.split(':');
+	// const msg = payloadTokens[0];
+	// //context.message = msg;
+	// wit.runActions(sessionId, msg, context, (error, context) => {
+	// 	if (error) {
+	// 		console.log('Oops! Got an error from Wit:', error);
+	// 		return;
+	// 	} 
 		
-		console.log('Waiting for futher messages.');
+	// 	console.log('Waiting for futher messages.');
 
-		if (context['done']) {
-			console.log('context done inside runActions');
-		   	sessionStore.destroy(sessionId);
-		}			
-	});
+	// 	if (context['done']) {
+	// 		console.log('context done inside runActions');
+	// 	   	sessionStore.destroy(sessionId);
+	// 	}			
+	// });
 
 /*	
 	let payloadTokens = payload.split(':');
