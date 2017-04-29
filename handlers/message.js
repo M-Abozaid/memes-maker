@@ -28,7 +28,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 				    "attachment":{
 				      "type":"image",
 				      "payload":{
-				        "url":"https://petersapparel.com/img/shirt.png"
+				        "url":"https://obscure-badlands-13161.herokuapp.com/mortada3.jpeg"
 				      }
 				    }
 				}

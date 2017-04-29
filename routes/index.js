@@ -30,8 +30,6 @@ router.get('/:id', function(req, res, next) {
 
   			res.end(html)
 		})
-  
-  
 
 });
 

@@ -33,7 +33,7 @@ const botRoutes = require('./routes');
 
 app.get('/bot', botRoutes.get);
 app.post('/bot', botRoutes.receive)
-app.use('/', index);
+app.use('/render', index);
 app.use('/users', users);
 
 
