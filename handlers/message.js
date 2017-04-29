@@ -19,11 +19,23 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
     console.log('current -- ',context.current.length);
 
  	if (Object.keys(context.current).length == 0) {
- 		GraphAPI.sendPlainMessage(recipientId, ' اكتب النص الاول').then(()=>{
- 			context.current.first = true
- 			session.context = context
- 			sessionStore.saveSession(sessionId, session)
- 		})
+ 		let data = {
+				    "attachment":{
+				      "type":"image",
+				      "payload":{
+				        "url":"https://obscure-badlands-13161.herokuapp.com/mortada-temp.jpg"
+				      }
+				    }
+				}
+	
+	  			GraphAPI.sendTemplateMessage(recipientId,data).then(()=>{
+	  				GraphAPI.sendPlainMessage(recipientId, ' اكتب النص الاول').then(()=>{
+			 			context.current.first = true
+			 			session.context = context
+			 			sessionStore.saveSession(sessionId, session)
+			 		})
+	  			})
+ 		
 
  	} else {
  		if (context.current.first && !context.current.text1) {
