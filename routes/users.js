@@ -8,7 +8,7 @@ router.get('/mortada3.png', function(req, res, next) {
 
 		//var wstream = fs.createWriteStream(path.join(__dirname, '../public/mortada3.jpeg'))
 
-		convert('https://obscure-badlands-13161.herokuapp.com/render/1473221956085675', {format:'png', quality: 50})  
+		convert('https://obscure-badlands-13161.herokuapp.com/render/1473221956085675', {format:'png', quality: 4})  
 		  .pipe(res);
 		  
   //res.send('respond with a resource');
