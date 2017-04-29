@@ -7,7 +7,9 @@ router.get('/mortada3.jpg', function(req, res, next) {
 	var convert = htmlConvert();
 
 		//var wstream = fs.createWriteStream(path.join(__dirname, '../public/mortada3.jpeg'))
-
+		res.writeHead(200, {
+            'Content-Type': 'image/jpeg'
+        });
 		convert('https://obscure-badlands-13161.herokuapp.com/render/1473221956085675', {format:'jpg', quality: 4})  
 		  .pipe(res);
 		  
