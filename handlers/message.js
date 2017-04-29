@@ -27,7 +27,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 
  	} else {
  		if (context.current.first && !context.current.text1) {
- 			GraphAPI.sendPlainMessage(recipientId, ' اكتب النص الاول').then(()=>{
+ 			GraphAPI.sendPlainMessage(recipientId, ' اكتب النص التاني').then(()=>{
  			context.current.text1 = msg
  			session.context = context
  			sessionStore.saveSession(sessionId, session)
