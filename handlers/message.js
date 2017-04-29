@@ -32,7 +32,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 				    }
 				}
 	  console.log('file has been written');
-	  GraphAPI.sendTemplateMessage(recipientId,)
+	  GraphAPI.sendTemplateMessage(context.userData.recipientId,data)
 	});
 
 };
