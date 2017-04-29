@@ -52,11 +52,11 @@ function mergeSharedConfigs(shared, config) {
  */
 function createConfig() {
     // const env = process.env.NODE_ENV || 'development';
-    // var config = require('./config');
+     var config = require('./config');
     // console.log( 'env ' + env );
 
     // config = mergeSharedConfigs(config.shared, config[env]);
-    var config = {}
+    
     config.fbPageToken = process.env.FB_VERIFY_TOKEN || config.fbPageToken;
     config.fbPageID = process.env.FB_PAGE_ID || config.fbPageID;
     config.fbWebhookVerifyToken = process.env.FB_WEBHOOK_VERIFY_TOKEN || config.fbWebhookVerifyToken;
