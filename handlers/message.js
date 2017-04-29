@@ -16,9 +16,11 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 
 	//context.current = context.current || {}
  	if (!context.current) { context.current = {}};  
+
  	if (context.current.length == 0) {
  		GraphAPI.sendPlainMessage(recipientId, ' اكتب النص الاول').then(()=>{
  			context.current.first = true
+ 			session.context = context
  			sessionStore.saveSession(sessionId, session)
  		})
 
@@ -26,12 +28,14 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
  		if (context.current.first && !context.current.text1) {
  			GraphAPI.sendPlainMessage(recipientId, ' اكتب النص الاول').then(()=>{
  			context.current.text1 = msg
+ 			session.context = context
  			sessionStore.saveSession(sessionId, session)
  		})
  		} else {
  			if (context.current.text1 && !context.current.text2) {
  				GraphAPI.sendPlainMessage(recipientId, ' تحميل...').then(()=>{
 		 			context.current.text2 = msg
+		 			session.context = context
 		 			sessionStore.saveSession(sessionId, session).then(()=>{
 		 				let data = {
 							    "attachment":{
@@ -44,6 +48,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 				
 				  			GraphAPI.sendTemplateMessage(context.userData.recipientId,data).then(()=>{
 				  				context.current = {}
+				  				session.context = context
 				  				sessionStore.saveSession(sessionId, session)
 				  			})
 		 			})
