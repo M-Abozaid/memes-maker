@@ -12,7 +12,7 @@ const error = require('debug')('cbp:lib:redis:error');
 const config = require('../config');
 error.log = console.error.bind(console);
 
-config = config.redis
+//config = config.redis
 var redisIsReady = false;
 
 //config 
