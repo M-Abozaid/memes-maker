@@ -2,9 +2,11 @@ var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/:text1/:text2', function(req, res, next) {
   //res.render('index', { title: 'Express' });
-  let text1 = 'لما انت تقولي يبقي انا استفدت ايه'
+  let text1= req.params.text1
+  let text2= req.params.text2
+  
   let html = `<!DOCTYPE html>
 <html >
   <head>
@@ -17,7 +19,7 @@ router.get('/', function(req, res, next) {
 	<div style=" position: relative;">
 		<img style="width: 100%;" src="./mortada.jpg">
 		<h1  style="z-index: 1000;color: yellow; position: absolute; top: 35%; left: 30%;">`+text1+`</h1>
-		<h1  style="z-index: 1000;color: yellow; position: absolute; top: 85%; left: 30%;">لما انت تقولي يبقي انا استفدت ايه</h1>
+		<h1  style="z-index: 1000;color: yellow; position: absolute; top: 85%; left: 30%;">`+text2+`</h1>
 	</div>
 	</body>
 </html>`
