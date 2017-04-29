@@ -10,7 +10,7 @@ router.get('/mortada3.jpg', function(req, res, next) {
 		res.writeHead(200, {
             'Content-Type': 'image/jpeg'
         });
-		convert('https://obscure-badlands-13161.herokuapp.com/render/1473221956085675', {format:'jpg', quality: 4})  
+		convert('https://obscure-badlands-13161.herokuapp.com/render/1473221956085675', {format:'jpg', quality: 90})  
 		  .pipe(res);
 		  
   //res.send('respond with a resource');
