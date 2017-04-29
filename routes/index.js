@@ -21,7 +21,7 @@ router.get('/:id', function(req, res, next) {
 					</head>
 					<body>
 					<div style=" position: relative;">
-						<img style="width: 100%;" src="./mortada.jpg">
+						<img style="width: 100%;" src="../mortada.jpg">
 						<h1  style="z-index: 1000;color: yellow; position: absolute; top: 35%; left: 30%;">`+text1+`</h1>
 						<h1  style="z-index: 1000;color: yellow; position: absolute; top: 85%; left: 30%;">`+text2+`</h1>
 					</div>
