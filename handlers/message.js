@@ -17,15 +17,22 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
  
 	var convert = htmlConvert();
 
-	var wstream = fs.createWriteStream('../public/mortada3.jpeg')
+	var wstream = fs.createWriteStream(path.join(__dirname, '../public/mortada3.jpebg'))
 
 	convert('https://obscure-badlands-13161.herokuapp.com/1473221956085675', {format:'jpeg', quality: 50})  
 	  .pipe(wstream);
 	 
 	 wstream.on('finish', function () {
-	 	
+	 	let data = {
+				    "attachment":{
+				      "type":"image",
+				      "payload":{
+				        "url":"https://petersapparel.com/img/shirt.png"
+				      }
+				    }
+				}
 	  console.log('file has been written');
+	  GraphAPI.sendTemplateMessage(recipientId,)
 	});
 
 };
-process.stdout
