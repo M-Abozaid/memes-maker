@@ -13,7 +13,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 
 	context.msg = msg
 	session.state = session.state  || 'new';
-
+	if (msg == 'contexxt') {context.current = {}}
 	//context.current = context.current || {}
  	if (!context.current) { context.current = {}};  
     console.log('current -- ',context.current);
