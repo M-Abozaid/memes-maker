@@ -16,7 +16,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 
 	//context.current = context.current || {}
  	if (!context.current) { context.current = {}};  
-    console.log('current -- ',context.current.length);
+    console.log('current -- ',context.current);
 
  	if (Object.keys(context.current).length == 0) {
  		let data = {
