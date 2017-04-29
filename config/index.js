@@ -62,7 +62,7 @@ function createConfig() {
     config.fbWebhookVerifyToken = process.env.FB_WEBHOOK_VERIFY_TOKEN || config.fbWebhookVerifyToken;
     //config.witToken = process.env.WIT_TOKEN || config.witToken;
 
-    config.redis = redisConfig() || config.redis;
+    config.redis =  config.redis; //redisConfig() ||
     //config.db = mongoConfig() || config.db;
 
     console.log(' config insid createConfig '+ JSON.stringify(config));
