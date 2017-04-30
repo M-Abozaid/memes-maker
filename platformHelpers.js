@@ -41,3 +41,31 @@ return {
 				}
 		}
 }
+
+
+exports.generateGeneric = function(array){
+		return{
+			"quick_replies":  [
+					    		{
+						        "content_type":"text",
+						        "title": 'next' ,
+						        "payload": 1
+						      	}
+							   ],
+		    "attachment":{
+		      "type":"template",
+		      "payload":{
+		        "template_type":"generic",
+		        "elements": _.map(array , img => {
+		           return{
+		            "image_url":img.url,
+		            "default_action": {
+		              "type": "postback",
+		              "payload":img.name
+		            }     
+		          }
+		        })
+		      }
+		    }
+		  }
+	}

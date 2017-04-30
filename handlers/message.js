@@ -5,6 +5,7 @@ const GraphAPI = require('../graphAPI');
 var htmlConvert = require('html-convert');
 var fs = require('fs');
 var path = require('path');
+const fs = require('fs');
 
 module.exports = function handleTextMessage (sessionId, session, msg) {
 	
@@ -18,7 +19,38 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
  	if (!context.current) { context.current = {}};  
     console.log('current -- ',context.current);
 
- 	if (Object.keys(context.current).length == 0) {
+ 	
+    if (msg == 'ready') {
+
+	var images = [];
+
+	(function initCustomActions() {
+	  var imagesPath = path.join(__dirname, '../public/outOf');
+	  var imageName = fs.readdirSync(imagesPath);
+
+	  imageName.forEach(function(im) {
+	    images.push({name:im,
+	      url:'https://obscure-badlands-13161.herokuapp.com/outOf/'+im})
+	  });
+	})();
+
+	//console.log('image ',images);
+	
+
+	let numOfVeiws = Math.floor(images.length/10) 
+	context.current.thisVeiw = context.current.thisVeiw || 0
+	var view = images.splice(context.current.thisVeiw * 10 ,10)
+	let data = generateGeneric(view)
+	GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
+		if(context.current.thisVeiw != numOfVeiws ){context.current.thisVeiw += 1}else{context.current.thisVeiw = 0}
+		context.current.chooseLog = true;
+		resolve(context)
+	})	
+
+    }
+
+
+ 	if (context.current.main === 'addText') {
  		let data = {
 				    "attachment":{
 				      "type":"image",
