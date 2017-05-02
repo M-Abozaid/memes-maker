@@ -60,7 +60,7 @@ exports.generateGeneric = function(array){
 		           return{
 		           	"title":"ready",
 		            "image_url":img.url,
-		            "bottons":[ 
+		            "buttons":[ 
 		            	{
 		            		"title":"use",
 				            "type": "postback",
