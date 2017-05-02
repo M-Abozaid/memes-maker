@@ -60,10 +60,13 @@ exports.generateGeneric = function(array){
 		           return{
 		           	"title":"ready",
 		            "image_url":img.url,
-		            "default_action": {
-		              "type": "postback",
-		              "payload":img.name
-		            }     
+		            "bottons":[ 
+		            	{
+		            		"title":"use",
+				            "type": "postback",
+				            "payload":img.name
+			            }
+		            ]     
 		          }
 		        })
 		      }
