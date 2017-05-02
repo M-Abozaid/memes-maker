@@ -39,7 +39,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 	let numOfVeiws = Math.floor(images.length/10) 
 	context.current.thisVeiw = context.current.thisVeiw || 0
 	var view = images.splice(context.current.thisVeiw * 10 ,10)
-	let data = generateGeneric(view)
+	let data = platformHelpers.generateGeneric(view)
 	GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 		if(context.current.thisVeiw != numOfVeiws ){context.current.thisVeiw += 1}else{context.current.thisVeiw = 0}
 		context.current.chooseIm = true;
