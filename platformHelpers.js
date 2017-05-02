@@ -58,6 +58,7 @@ exports.generateGeneric = function(array){
 		        "template_type":"generic",
 		        "elements": _.map(array , img => {
 		           return{
+		           	"title":"ready",
 		            "image_url":img.url,
 		            "default_action": {
 		              "type": "postback",
