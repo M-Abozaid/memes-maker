@@ -43,7 +43,8 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 	GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 		if(context.current.thisVeiw != numOfVeiws ){context.current.thisVeiw += 1}else{context.current.thisVeiw = 0}
 		context.current.chooseIm = true;
-		resolve(context)
+		session.context = context
+		sessionStore.saveSession(sessionId, session)
 	})	
 
     }
