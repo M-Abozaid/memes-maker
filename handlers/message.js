@@ -5,7 +5,6 @@ const GraphAPI = require('../graphAPI');
 var htmlConvert = require('html-convert');
 var fs = require('fs');
 var path = require('path');
-const fs = require('fs');
 
 module.exports = function handleTextMessage (sessionId, session, msg) {
 	
@@ -19,9 +18,9 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
  	if (!context.current) { context.current = {}};  
     console.log('current -- ',context.current);
 
- 	
-    if (msg == 'ready') {
 
+    if (context.msg == 'ready') {
+    	context.current.main = 'ready';
 	var images = [];
 
 	(function initCustomActions() {
@@ -43,11 +42,12 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 	let data = generateGeneric(view)
 	GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 		if(context.current.thisVeiw != numOfVeiws ){context.current.thisVeiw += 1}else{context.current.thisVeiw = 0}
-		context.current.chooseLog = true;
+		context.current.chooseIm = true;
 		resolve(context)
 	})	
 
     }
+
 
 
  	if (context.current.main === 'addText') {
